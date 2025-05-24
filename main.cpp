@@ -46,7 +46,7 @@ int main() {
         "0a0d1a1a0a"      // Encrypted word 7
     };
 
-    const char key = 0x55; // XOR key used for decryption
+    const char key = 0x55; 
 
     srand(static_cast<unsigned int>(time(nullptr)));
 
