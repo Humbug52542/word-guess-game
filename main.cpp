@@ -15,7 +15,6 @@
 
 using namespace std;
 
-// Converts a hex string into raw bytes
 string hexToBytes(const string& hex) {
     string result;
     for (size_t i = 0; i < hex.length(); i += 2) {
@@ -25,7 +24,6 @@ string hexToBytes(const string& hex) {
     return result;
 }
 
-// Decrypts the given string using XOR with the provided key
 string decrypt(const string& data, char key) {
     string decrypted;
     for (char c : data) {
@@ -35,7 +33,6 @@ string decrypt(const string& data, char key) {
 }
 
 int main() {
-    // Encrypted words stored as hex strings
     vector<string> encryptedWords = {
         "0b06031f1f0e",   // Encrypted word 1
         "0b0702011c020a", // Encrypted word 2
@@ -50,14 +47,12 @@ int main() {
 
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    // Decrypt all words at runtime
     vector<string> words;
     for (const auto& ew : encryptedWords) {
         string raw = hexToBytes(ew);
         words.push_back(decrypt(raw, key));
     }
 
-    // Select a random secret word
     string secretWord = words[rand() % words.size()];
 
     set<char> guessedLetters;
@@ -65,11 +60,9 @@ int main() {
 
     cout << "Welcome to the Word Guess Game!\n";
 
-    // Main game loop
     while (attemptsLeft > 0) {
         bool allGuessed = true;
 
-        // Display the word with guessed letters revealed
         for (char c : secretWord) {
             if (guessedLetters.count(c)) {
                 cout << c << ' ';
@@ -85,7 +78,6 @@ int main() {
         cin >> guess;
         guess = tolower(guess);
 
-        // If letter already guessed, prompt again
         if (guessedLetters.count(guess)) {
             cout << "Already guessed.\n";
             continue;
@@ -93,13 +85,11 @@ int main() {
 
         guessedLetters.insert(guess);
 
-        // Reduce attempts if guess is wrong
         if (secretWord.find(guess) == string::npos) {
             cout << "Wrong!\n";
             attemptsLeft--;
         }
 
-        // Check for win condition
         if (allGuessed) {
             cout << "You won! The word was " << secretWord << "\n";
             break;
