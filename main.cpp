@@ -1,9 +1,3 @@
-// main.cpp
-// MIT License
-// Copyright (c) 2025 Humbug!!
-
-// See LICENSE file in the root of this repository.
-
 
 #include <iostream>
 #include <string>
@@ -96,7 +90,6 @@ int main() {
         }
     }
 
-    // Game over if out of attempts
     if (attemptsLeft == 0) {
         cout << "You lost! The word was " << secretWord << "\n";
     }
