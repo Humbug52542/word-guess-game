@@ -33,6 +33,5 @@ Feel free to fork, star, and contribute!
 
 ## License
 
-MIT License © 2025 Humbug!!
 
 
